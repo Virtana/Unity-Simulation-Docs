@@ -1,0 +1,9 @@
+{
+    "replicateCube": 5,
+    "quitAfterSeconds": 25,
+    "screenCaptureInterval": 0.1,
+    "red": 230,
+    "green": 100,
+    "blue": 100,
+    "whichObjects": "cube"
+}

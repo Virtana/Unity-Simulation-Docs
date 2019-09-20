@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="DataExchange" t="Include">
+          <e p="Runtime" t="Include">
+            <e p="DXProfilerManager.cs" t="Include" />
+            <e p="SRPSupport.cs" t="Include" />
+          </e>
+          <e p="SimulationSDK" t="Include">
+            <e p="Plugins" t="Include">
+              <e p="JpgEncoder" t="Include">
+                <e p="JpegEncoder.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Resources" t="Include">
+              <e p="USimBlitToDepth.shader" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="ApplyInstanceCountability.cs" t="Include" />
+          <e p="ApplySegmentation.cs" t="Include" />
+          <e p="CameraSpinner.cs" t="Include" />
+          <e p="CubeAppParam.cs" t="Include" />
+          <e p="CubeSpawner.cs" t="Include" />
+          <e p="CubeSpinner.cs" t="Include" />
+          <e p="DataPoint.cs" t="Include" />
+          <e p="DataPointIntegration.cs" t="Include" />
+          <e p="InstanceCount.cs" t="Include" />
+          <e p="InstanceDataCapture.cs" t="Include" />
+          <e p="MountainParam.cs" t="Include" />
+          <e p="ObjectPosition.cs" t="Include" />
+          <e p="ParamReader.cs" t="Include" />
+          <e p="ScreenDataCapture.cs" t="Include" />
+          <e p="TestDataCapture.cs" t="Include" />
+          <e p="TimeQuit.cs" t="Include" />
+        </e>
+        <e p="Segmentation.shader" t="Include" />
+      </e>
+      <e p="completed_tutorials.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp/bin" t="ExcludeRecursive" />
+    </e>
+    <e p="$USER_HOME$/Library/Caches/Rider2019.2/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.2/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_completed_tutorials.1619848775.00" t="ExcludeRecursive" />
+  </component>
+</project>

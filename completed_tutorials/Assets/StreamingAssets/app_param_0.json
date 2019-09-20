@@ -1,0 +1,5 @@
+{
+    "replicateCube": 4,
+    "quitAfterSeconds": 10,
+    "screenCaptureInterval": 0.1
+}
