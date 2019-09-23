@@ -9,7 +9,7 @@ This tutorial assumes the user has some familiarity with the Unity Editor. If co
 
 Other Prerequesites:
 - Unity Account
-- Unity version >= 2018.3.f1
+- Unity version >= 2018.3.f1 (>= 2019.3 for [SRP](https://docs.unity3d.com/Manual/ScriptableRenderPipeline.html) support)
 - Supported platforms: Windows10+ and 0SX (High-Sierra or newer)
 - Linux build support installed
 

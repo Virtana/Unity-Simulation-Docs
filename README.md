@@ -8,7 +8,7 @@ You should install a compatible version of Unity that is listed below. Please ma
 
 - Unity Account
 - Unity Cloud Project
-- Unity version >= 2018.3.f1
+- Unity version >= 2018.3.f1 (>= 2019.3 for [SRP](https://docs.unity3d.com/Manual/ScriptableRenderPipeline.html) support)
 - Supported platforms: Windows10+ and OS X 10.13+
 - Linux build support required
 
