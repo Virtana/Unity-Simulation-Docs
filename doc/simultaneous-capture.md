@@ -72,11 +72,21 @@ public class ScreenDataCapture : MonoBehaviour
         // Call Screen Capture
         var screen = CaptureCamera.Capture(_camera, request =>
         {
-            string path = screenCapturePath + "/" + imageName + ".jpg";
+            string path = string.Format("{0}/{1}.jpg", screenCapturePath, imageName);
+
+            // Ensure that the width & height match the aspect ratio
+            // Refer https://docs.unity3d.com/Manual/GameView.html
+            int width = 1024;
+            int height = 768;
+            bool flipY = false;
 
             // Convert the screen capture to a byte array
-            Array image = CaptureImageEncoder.Encode(request.data.colorBuffer as Array, 640, 480, GraphicsFormat.R8G8B8A8_UNorm,
-                    CaptureImageEncoder.ImageFormat.Jpg, true);
+            Array image = CaptureImageEncoder.Encode(
+                request.data.colorBuffer as Array,
+                width, height,
+                GraphicsFormat.R8G8B8A8_UNorm,
+                CaptureImageEncoder.ImageFormat.Jpg,
+                flipY);
 
             // Write the screen capture to a file
             var result = DXFile.Write(path, image);
