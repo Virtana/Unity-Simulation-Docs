@@ -22,6 +22,8 @@ Many of the following commands use these arguments.
 Initiates the oauth flow to retrieve your authentication token.
 ### usim refresh auth
 Uses the locally stored refresh token to retrieve an updated authentication token.
+### usim inspect auth
+Prints the locally stored authentication information. Useful for retrieving your access-token for direct API calls. See also: [how-to](how-to.md#retrieve-authentication-token-for-direct-api-calls) doc.
 
 ## Project Commands
 ### usim get projects
