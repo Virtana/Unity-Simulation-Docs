@@ -129,3 +129,10 @@ Required arguments: \
 Optional arguments: \
 `--count=<count>` Where count is the number of log `pages` to retrieve. (**Note**: Defaults to 12) \
 `--head` If this flag is present, the count value begins at the first page and counts up, otherwise counts in reverse from the last page.
+
+## Completions
+See the [how-to](how-to.md#install-completions) for help with completions.
+### usim completion bash
+Prints out completion functions for bash.
+### usim completion zsh
+Prints out completion functions for zsh.

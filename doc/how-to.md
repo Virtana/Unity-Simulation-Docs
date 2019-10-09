@@ -38,3 +38,18 @@ example curl command:
 ```
 curl <your_url_and_flags> -H 'Authorization: Bearer <your_access_token>'
 ```
+
+## Install Completions
+
+### zsh
+Run `usim completion zsh > _usim` \
+Move the _usim file to a location on your `$fpath` (function path).
+Then run `autoload -U compinit && compinit`. \
+
+[oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) users may wish to put the `_usim` file in `~/.oh-my-zsh/completions/` and add `autoload -U compinit && compinit` to their `.zshrc` file.
+
+### bash
+`usim completion bash > usim.sh` \
+Make the script executable with `chmod +x usim.sh` and then run `source ./usim.sh`
+
+Consider placing the source command in your `~/.bashrc` file.
