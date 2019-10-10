@@ -19,22 +19,24 @@ You can find the official Unity documentation on Render Textures [here](https://
 
 The recommended method of retrieving your bearer token is by using the `usim` Command Line Interface tool from the [latest](https://github.com/Unity-Technologies/Unity-Simulation-Docs/releases) release of the Unity Simulation bundle.
 
-Use the [usim login auth](cli.md#usim-login-auth) command to authenticate with your Unity ID. After successfully authenticating you can find your token by inspecting the `token.json` file located in your Home directory.
+Use the [usim login auth](cli.md#usim-login-auth) command to authenticate with your Unity ID. After successfully authenticating you can find your token by executing the `inspect auth` command. This command will read from the usim CLI configuration files in your Home directory and print your token information.
 
+example command:
 ```
-mac
-~/.usim/token.json
-
-win
-%HOMEPATH%/.usim/token.json
+usim inspect auth
 ```
+| output field | description |
+|--------------|-------------|
+| access token: | set your `Authorization` http header to this value |
+| expires in: | expected expiration in number of Days, HH:MM:SS |
+| expired: | True/False whether the access token has expired |
+| refresh token: | single-use token to refresh the access token |
+| updated: | last time this token was updated |
 
-This JSON file will have several keys present. The value for the `access_token` key can be used to make API calls to the Unity Simulation service by setting the `Authorization` http header to `Bearer <insert_access_token_here>`.
-
-This token has a relatively short expiration and may need to be periodically refreshed by using the [usim login refresh](cli.md#usim-login-refresh) command.
+This acccess token has a relatively short expiration and may need to be periodically refreshed by using the [usim login refresh](cli.md#usim-login-refresh) command.
 
 example curl command:
 
-```
+```bash
 curl <your_url_and_flags> -H 'Authorization: Bearer <your_access_token>'
 ```
