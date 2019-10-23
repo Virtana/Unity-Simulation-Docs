@@ -82,7 +82,7 @@ A JSON file defining a particular sys-param ID, one or more app-param IDs with t
 An execution of a particular Run Definition on the Unity Simulation service.
 
 ## Run Instance
-A single machine that can execute one to many simulations associated with a single app-param.
+A single machine that can execute one to many simulations each associated with a single app-param.
 
 ## Simulation Instance
 A single simulation executing on a Run Instance.
@@ -92,10 +92,10 @@ A single simulation executing on a Run Instance.
 Columns:
 - `run_execution_id` - The run execution ID that generated the data available on this line.
 - `app_param_id` - The app-param used during the simulation that generated the data available on this line.
-- `instance_id` - The instance ID of the machine that executed the simulation that generated the data on this line.
-- `attempt_id` - Each simulation will retry a total of two times in the event of a simulation failure. This ID denotes which attempted execution generated the data.
+- `instance_id` - The unique simulation instance ID that generated the data on this line.
+- `attempt_id` - Each simulation will retry a number of times in the event of a simulation failure. This ID denotes which attempted execution generated the data.
 - `file_name` -  Name of the file to be downloaded.
-- `download_uri` - 
+- `download_uri` - The url used to download the file referenced by file_name.
 
 Files and file types available on each line:
 - Images saved as JPG, TGA, or RAW.
