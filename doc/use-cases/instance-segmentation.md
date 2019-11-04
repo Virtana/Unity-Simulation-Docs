@@ -1,4 +1,4 @@
-## How to Implement Semantic Segmentation on Unity Simulation
+## How to Implement Instance Segmentation on Unity Simulation
 
 - Open Unity and create a new scene.
 - Import the Unity Simulation SDK.
