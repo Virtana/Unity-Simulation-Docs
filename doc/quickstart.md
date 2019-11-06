@@ -402,7 +402,7 @@ Please reference the [Anatomy of a Manifest](taxonomy.md#anatomy-of-a-manifest) 
 
 
 #### Just The Commands
-All commands must be executed from the `unity_simulation_bundle` directory  downloaded in the [Download](#download-unity-simulation-bundle-quick-start-materials) step of this guide and user must have at least one Unity cloud project described in the [Activate](#activate-unity-project) step.
+All commands must be executed from the `unity_simulation_bundle` directory downloaded in the [Download](#download-unity-simulation-bundle-quick-start-materials) step of this guide. The authenticated user must have at least one Unity cloud project described in the [Activate](#activate-unity-project) step.
 
 MacOS
 ```shell
