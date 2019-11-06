@@ -1,7 +1,7 @@
 # Use Case How Tos
 Examples of Unity Simulation use cases and how to implement them.
 
-NOTE: The following How To guides assume familiarity with the concepts they are implementing and are not intentioned to describe the problems that they might be used to solve. 
+NOTE: The following How To guides assume familiarity with the concepts they are implementing and are not intended to describe the problems that they might be used to solve. 
 
 
 | Section | Description |
