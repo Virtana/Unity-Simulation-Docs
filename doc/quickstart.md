@@ -6,8 +6,6 @@ Following this quick start guide you will execute an instance of a simple Unity 
 
 Prior to starting ensure that you have read through the Unity Simulation  [Taxonomy Guide](taxonomy.md) and that all prerequisites have been met by referencing the [Requirements Guide](requirements.md).
 
-
-
 ## Guide
 
 Following are the set of steps in this quick start guide
@@ -26,6 +24,7 @@ Following are the set of steps in this quick start guide
 |8. | [Execute Run](#execute-run) | Execute an uploaded Run definition|
 |9. | [Check Run Status](#check-run-status) | Check the status of an executing Run|
 |10. | [Download data](#download-data) | Download data associated with a Run|
+|11. | [Just the Commands](#just-the-commands)| The necessary commands to upload and execute a simulation|
 ---
 
 
@@ -298,7 +297,7 @@ $ USimCLI/mac/usim execute run <run-def-id>
 ```
 Windows:
 ```
- USimCLI\windows\usim.exe execute run <run-def-id>
+> USimCLI\windows\usim.exe execute run <run-def-id>
 
 ```
 
@@ -392,7 +391,7 @@ $ USimCLI/mac/usim download manifest <exec-id> --save-in=RunExecutionData
 ```
 Windows:
 ```posh
-$ USimCLI\windows\usim.exe download manifest <exec-id> --save-in=RunExecutionData
+> USimCLI\windows\usim.exe download manifest <exec-id> --save-in=RunExecutionData
 
 ```
 
@@ -400,3 +399,59 @@ Now the `unity_simulation_bundle/RunExecutionData` directory should have a singl
 
 
 Please reference the [Anatomy of a Manifest](taxonomy.md#anatomy-of-a-manifest) guide for more information on the layout and types of files that could be present within a manifest.
+
+
+#### Just The Commands
+All commands must be executed from the `unity_simulation_bundle` directory  downloaded in the [Download](#download-unity-simulation-bundle-quick-start-materials) step of this guide and user must have at least one Unity cloud project described in the [Activate](#activate-unity-project) step.
+
+MacOS
+```shell
+$ USimCLI/mac/usim login auth
+$ USimCLI/mac/usim activate project
+
+$ USimCLI/mac/usim upload build ./RollaballLinuxBuild/rollaball_linux_build.zip 
+    # Outputs  Build ID
+
+$ USimCLI/mac/usim upload app-param ./AppParams/app-param.json
+    #  Outputs AppParam ID
+
+$ USimCLI/mac/usim define run
+    # Outputs Run Definition ID
+
+# Replace <run-def-id> with the ID output by the previous command 
+$ USimCLI/mac/usim execute run <run-def-id>
+    # Outputs Run Execution ID
+
+# Simulation Status
+$ USimCLI/mac/usim summarize run-execution <exec-id>
+$ USimCLI/mac/usim describe run-execution <exec-id>
+
+# After Simulation shows a 'Complete' status
+$ USimCLI/mac/usim download manifest <exec-id> --save-in=RunExecutionData
+```
+
+Windows
+
+```posh
+> USimCLI\windows\usim.exe login auth
+> USimCLI\windows\usim.exe activate project
+
+> USimCLI\windows\usim.exe upload build RollaballLinuxBuild\rollaball_linux_build.zip
+    # Outputs  Build ID
+
+> USimCLI\windows\usim.exe upload app-param AppParams\app-param.json
+    #  Outputs AppParam ID
+
+> USimCLI\windows\usim.exe define run
+    # Outputs Run Definition ID
+
+> USimCLI\windows\usim.exe execute run <run-def-id>
+    # Outputs Run Execution ID
+
+# Simulation Status
+> USimCLI\windows\usim.exe summarize run-execution <exec-id>
+> USimCLI\windows\usim.exe describe run-execution <exec-id> --states=in-progress,failed
+
+# After Simulation shows a 'Complete' status download data
+> USimCLI\windows\usim.exe download manifest <exec-id> --save-in=RunExecutionData
+```

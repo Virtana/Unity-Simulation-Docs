@@ -25,6 +25,7 @@ Please refer to the [Installing pre-requisites guide](doc/requirements.md) for a
 |[Linux Build Testing](doc/testing.md) | Testing Linux build locally|
 |[Sample Roll-A-Ball tutorial](https://github.com/Unity-Technologies/Unity-Simulation-RollABall) | Sample unity project integrated with the Unity Simulation SDK|
 |[Simultaneous Capture](doc/simultaneous-capture.md)|How to simultaneously log data and capture an image.|
+|[Use Case How Tos](doc/use-cases/use-cases.md) | Examples use cases and how to implement them.|
 |[Tiers](doc/usage-tiers.md)| How tiers affect your resource allowance and usage |
 ---
 
