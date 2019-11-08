@@ -6,36 +6,35 @@ Following this quick start guide you will execute an instance of a simple Unity 
 
 Prior to starting ensure that you have read through the Unity Simulation  [Taxonomy Guide](taxonomy.md) and that all prerequisites have been met by referencing the [Requirements Guide](requirements.md).
 
-
-
 ## Guide
 
 Following are the set of steps in this quick start guide
 
 ---
 
-| Section | Name | Description |
-|---|---|---|
-|1. | [Download Unity Simulation Bundle Quick Start Materials](#download-unity-simulation-bundle-quick-start-materials) | Download the Unity Simulation CLI with quick start materials|
-|2. | [Login](#login) | Login to Unity Simulation via the CLI  |
-|3. | [Activate Unity Project](#activate-unity-project) | Activate a Unity project with Unity Simulation |
-|4. | [Upload build](#upload-build) | Upload a Unity player simulation linux build|
-|5. | [Upload Application Parameter](#upload-application-parameter) | Upload Application Parameters associated with your simulation Run|
-|6. | [Define Run](#define-run) | Define a Simulation Run that ties your build, sys-param and app-param|
-|7. | [Upload Run Definition](#upload-run-definition) | Upload a previously generated run definition file|
-|8. | [Execute Run](#execute-run) | Execute an uploaded Run definition|
-|9. | [Check Run Status](#check-run-status) | Check the status of an executing Run|
-|10. | [Download data](#download-data) | Download data associated with a Run|
----
-
-
+| Section | Name                                                                                                              | Description                                                           |
+| ------- | ----------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| 1.      | [Download Unity Simulation Bundle Quick Start Materials](#download-unity-simulation-bundle-quick-start-materials) | Download the Unity Simulation CLI with quick start materials          |
+| 2.      | [Login](#login)                                                                                                   | Login to Unity Simulation via the CLI                                 |
+| 3.      | [Activate Unity Project](#activate-unity-project)                                                                 | Activate a Unity project with Unity Simulation                        |
+| 4.      | [Just the Commands](#just-the-commands)                                                                           | Just the commands to upload and execute a simulation                  |
+| 5.      | [Upload build](#upload-build)                                                                                     | Upload a Unity player simulation linux build                          |
+| 6.      | [Upload Application Parameter](#upload-application-parameter)                                                     | Upload Application Parameters associated with your simulation Run     |
+| 7.      | [Define Run](#define-run)                                                                                         | Define a Simulation Run that ties your build, sys-param and app-param |
+| 8.      | [Upload Run Definition](#upload-run-definition)                                                                   | Upload a previously generated run definition file                     |
+| 9.      | [Execute Run](#execute-run)                                                                                       | Execute an uploaded Run definition                                    |
+| 10.     | [Check Run Status](#check-run-status)                                                                             | Check the status of an executing Run                                  |
+| 11.     | [Download data](#download-data)                                                                                   | Download data associated with a Run                                   |
+| ---     |                                                                                                                   |                                                                       |
 
 ### Download Unity Simulation Bundle Quick Start Materials
+
 The latest quick start materials, `unity_simulation_bundle.zip`, and Unity Simulation SDK can be downloaded from [here](https://github.com/Unity-Technologies/Unity-Simulation-Docs/releases) under the `Assets` drop down of the latest release. These instructions are also available for download as either of the `Source code` options.
 
 > ![unity_simulation_bundle](images/assets-bundle.png "unity_simulation_bundle")
 
 Unity Simulation Bundle Quick Start Materials includes:
+
 - Sample Application Parameter file
 - Sample RunDefinition file  # For reference purposes only.
 - Sample Dockerfile file # Used for local testing scenarios
@@ -49,10 +48,13 @@ Unzip the quick start materials, `unity_simulation_bundle.zip`, to a well known 
 For example, if the quick start materials were downloaded and unzipped in the `Downloads` directory one of the following commands will change to the correct directory to execute the Unity Simulation CLI commands in the terminal window.
 
 OSX:
-``````console
+
+```console
 $ cd ~/Downloads/unity_simulation_bundle
-``````
+```
+
 Windows:
+
 ```posh
 > cd C:\Users\MyName\Downloads\unity_simulation_bundle
 ```
@@ -62,10 +64,13 @@ Windows:
 Use your Unity credentials to login via the CLI.
 
 OSX:
+
 ```console
 $ USimCLI/mac/usim login auth
 ```
+
 Windows:
+
 ```posh
 
 > USimCLI\windows\usim.exe login auth
@@ -78,13 +83,15 @@ This will either ask you to enter your Unity credentials in a browser or if you 
 *NOTE*: In the event that your token expires you can run the following command to refresh your authentication.
 
 OSX:
+
 ```console
 $ USimCLI/mac/usim refresh auth
 ```
+
 Windows:
+
 ```posh
 > USimCLI\windows\usim.exe refresh auth
-
 ```
 
 ### Activate Unity Project
@@ -93,16 +100,18 @@ All runs and data created in Unity Simulation must be associated with a Unity cl
 
 Prior to starting the run please ensure that you have a new or existing unity project available within your organization. If you need to create a Unity cloud project navigate to the [Unity developer dashboard](https://developer.cloud.unity3d.com/projects/) and click the `Create New Project` button in the upper right corner.
 
-
 ![unity project page](images/qs-1.png "Unity Project page")
 
 Back in the terminal run the following command to set the active Unity Project ID in Unity Simulation.
 
 OSX:
+
 ```console
 $ USimCLI/mac/usim activate project
 ```
+
 Windows:
+
 ```posh
 >USimCLI\windows\usim.exe activate project
 ```
@@ -129,8 +138,67 @@ Enter choice number: 1
 -- Returns
 
 Project ec38c5c0-c94a-4688-91a2-2d45c8078693 activated.
-````
+```
+
 Once a Unity Cloud Project ID has been activated you can begin uploading the necessary files to execute a simulation.
+
+#### Just The Commands
+
+
+
+All commands must be executed from the `unity_simulation_bundle` directory downloaded in the [Download](#download-unity-simulation-bundle-quick-start-materials) step of this guide and user must have at least one Unity cloud project described in the [Activate](#activate-unity-project) step.
+
+MacOS
+```shell
+$ USimCLI/mac/usim login auth
+$ USimCLI/mac/usim activate project
+
+$ USimCLI/mac/usim upload build ./RollaballLinuxBuild/rollaball_linux_build.zip
+    # Outputs  Build ID
+
+$ USimCLI/mac/usim upload app-param ./AppParams/app-param.json
+    #  Outputs AppParam ID
+
+$ USimCLI/mac/usim define run
+    # Outputs Run Definition ID
+
+# Replace <run-def-id> with the ID output by the previous command
+$ USimCLI/mac/usim execute run <run-def-id>
+    # Outputs Run Execution ID
+
+# Simulation Status
+$ USimCLI/mac/usim summarize run-execution <exec-id>
+$ USimCLI/mac/usim describe run-execution <exec-id>
+
+# After Simulation shows a 'Complete' status
+$ USimCLI/mac/usim download manifest <exec-id> --save-in=RunExecutionData
+```
+
+Windows
+
+```posh
+> USimCLI\windows\usim.exe login auth
+> USimCLI\windows\usim.exe activate project
+
+> USimCLI\windows\usim.exe upload build RollaballLinuxBuild\rollaball_linux_build.zip
+    # Outputs  Build ID
+
+> USimCLI\windows\usim.exe upload app-param AppParams\app-param.json
+    #  Outputs AppParam ID
+
+> USimCLI\windows\usim.exe define run
+    # Outputs Run Definition ID
+
+> USimCLI\windows\usim.exe execute run <run-def-id>
+    # Outputs Run Execution ID
+
+# Simulation Status
+> USimCLI\windows\usim.exe summarize run-execution <exec-id>
+> USimCLI\windows\usim.exe describe run-execution <exec-id> --states=in-progress,failed
+
+# After Simulation shows a 'Complete' status download data
+> USimCLI\windows\usim.exe download manifest <exec-id> --save-in=RunExecutionData
+```
 
 ### Upload Build
 
@@ -138,10 +206,13 @@ A zipped Linux build of the Unity tutorial scene [RollABall](https://learn.unity
 The following commands will upload this zip to the Unity Simulation service so the scene can be executed on Unity Simulation.
 
 OSX:
+
 ```console
 $ USimCLI/mac/usim upload build RollaballLinuxBuild/rollaball_linux_build.zip
 ```
+
 Windows:
+
 ```posh
 > USimCLI\windows\usim.exe upload build RollaballLinuxBuild\rollaball_linux_build.zip
 ```
@@ -151,18 +222,21 @@ Windows:
 
 RollaballLinuxBuild/rollaball_linux_build.zip successfully uploaded with ID <build-id>
 ```
-*NOTE*: The output will provide you with the ID for this particular build.
 
+*NOTE*: The output will provide you with the ID for this particular build.
 
 ### Upload Application Parameter
 
 Upload an Application Parameter file which contains values used to set variables during the execution of the RollABall simulation. For example, number of players and simulation run time are variables set from this file.
 
 OSX:
+
 ```console
 $ USimCLI/mac/usim upload app-param AppParams/app-param.json
 ```
+
 Windows:
+
 ```
 > USimCLI\windows\usim.exe upload app-param AppParams\app-param.json
 ```
@@ -182,10 +256,13 @@ The app-param that we provided will generate around 30 images in 30 seconds and 
 This step will launch you into a text-based wizard to define a simulation run. This definition will contain the build id, app-param id(s), system parameters to execute the build with, and number of instances the simulation should execute with each app-param.
 
 OSX:
+
 ```console
 $ USimCLI/mac/usim define run
 ```
+
 Windows:
+
 ```
 >  USimCLI\windows\usim.exe define run
 ```
@@ -220,6 +297,7 @@ Choose sys-params:
  5        gcp@cpu:30                           gcp: 30 vCPU, 112.5 GB
 Enter choice number: 1
 ```
+
 **Note**: You may see additional sys-params, please choose only from the above list.
 
 Next enter the number corresponding to the sys-param you would like to use.
@@ -241,11 +319,14 @@ Since we have only uploaded one app-param we will select the only app-param list
 *NOTE*: If the same app-param file is selected multiple times only the last defined number of instances will be used.
 
 OSX:
+
 ```console
 Directory name where this run definition (my-new-simulation.json) will be saved: ./RunDefinitions/
 Run definition saved as ./RunDefinitions/my-new-simulation.json
 ```
+
 Windows:
+
 ```posh
 Directory name where this run definition (my-new-simulation.json) will be saved: .\RunDefinitions\
 Run definition saved as .\RunDefinitions\my-new-simulation.json
@@ -254,11 +335,14 @@ Run definition saved as .\RunDefinitions\my-new-simulation.json
 Enter a valid directory to save the run definition as a JSON file on the local filesystem in the directory specified.
 
 OSX:
+
 ```console
 Would you like to upload the run definition now? (Y/n) y
 ./RunDefinitions/my-new-simulation.json successfully uploaded with ID <run-definition-id>
 ```
+
 Windows:
+
 ```posh
 
 Would you like to upload the run definition now? (Y/n) y
@@ -272,10 +356,13 @@ Finally there will be a prompt asking to upload the run-definition we just creat
 In the event that you did not upload the run definition in the previous step or you need to upload a run definition that already exist on the filesystem you can do so by entering the following command.
 
 OSX:
+
 ```console
 $ USimCLI/mac/usim upload run RunDefinitions/my-new-simulation.json
 ```
+
 Windows:
+
 ```posh
 $ USimCLI\windows\usim.exe upload run RunDefinitions\my-new-simulation.json
 ```
@@ -288,18 +375,21 @@ quickstart-rundef.json successfully uploaded with ID <run-def-id>
 This will output the run definition ID that you will need in the next step.
 
 ### Execute Run
+
 In this step you will submit the run definition uploaded in the previous step to receive an execution id of the submitted run definition.
 
 Replace <run-def-id> with the run ID returned in the previous step for the following commands.
 
 OSX:
+
 ```console
 $ USimCLI/mac/usim execute run <run-def-id>
 ```
-Windows:
-```
- USimCLI\windows\usim.exe execute run <run-def-id>
 
+Windows:
+
+```
+> USimCLI\windows\usim.exe execute run <run-def-id>
 ```
 
 ```
@@ -316,11 +406,15 @@ This run execution will take around seven to ten minutes to complete.
 To periodically check on the run execution status the following two commands can be used with your run execution ID.
 
 #### Summarize Run Execution
+
 OSX:
+
 ```console
 $ USimCLI/mac/usim summarize run-execution <exec-id>
 ```
+
 Windows:
+
 ```posh
 > USimCLI\windows\usim.exe summarize run-execution <exec-id>
 ```
@@ -347,28 +441,33 @@ Once you see counts greater than zero for an instance state in the summary table
 
 **Note:** When the summary counts are all zero you will receive a message indicating that there is no instance-level status information to report. (example: `0 instances matching this instance state filter`)
 
-
-
 #### Describe Run Execution
+
 OSX:
+
 ```console
 $ USimCLI/mac/usim describe run-execution <exec-id> --states=in-progress,failed
 ```
+
 Windows:
+
 ```posh
 > USimCLI\windows\usim.exe describe run-execution <exec-id> --states=in-progress,failed
 ```
+
 **Note:** Permitted states are comma separated values from [all,ok,failed,not-run,pending,in-progress] (See `usim -h`)
+
 ```
 -- Returns
  Instance #   App Param ID    Attempt #   Start Time            Duration (ms)   State        Message
 ------------ --------------- ----------- --------------------- --------------- ------------ ---------
  1            <app-param-id>  1           2019-08-15 19:56:30   None            InProgress
 ```
+
 **NOTE:** Duration will only be updated after completion and is a rough estimate of the instance's run duration with approximately 30-second precision.
 
-
 After the summary status is `Completed` you can proceed to the [Download Data](#download-data) section. An example of a `Completed` status is below.
+
 ```
 Execution status: Completed (SchedulerService)
  state         count
@@ -386,17 +485,17 @@ Data generated by the simulation will be available for download for 90 days. Aft
 This command will not actually download the data directly and instead it will download a manifest file in CSV format with signed URLs to the data that this run has produced; such as images and logs. You will need to provide the path to the directory where you want the CLI to save the manifest file. The signed URL's in the `download_url` column of the manifest file will only be valid for a limited time, after which you will need to generate a new manifest. You may specify the duration of this period by passing the --expires=<seconds> flag. The maximum duration is one week (604,800 seconds).
 
 OSX:
+
 ```console
 $ USimCLI/mac/usim download manifest <exec-id> --save-in=RunExecutionData
-
 ```
-Windows:
-```posh
-$ USimCLI\windows\usim.exe download manifest <exec-id> --save-in=RunExecutionData
 
+Windows:
+
+```posh
+> USimCLI\windows\usim.exe download manifest <exec-id> --save-in=RunExecutionData
 ```
 
 Now the `unity_simulation_bundle/RunExecutionData` directory should have a single CSV file with approximately 30 lines where each line contains a signed url to the generated image. Additionally, there will be a line which contains the output of the Player log generated during the run execution.
-
 
 Please reference the [Anatomy of a Manifest](taxonomy.md#anatomy-of-a-manifest) guide for more information on the layout and types of files that could be present within a manifest.
