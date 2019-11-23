@@ -38,6 +38,15 @@ Secondary cameras need to render into a render texture, and that RT may need a d
 The primary camera uses the display backbuffer with a depth attachment, but secondary cameras need to render into something.
 Adding a render target will solve this issue. If your objects in the scene use shaders with depth testing enabled, then make sure that the RT has depth enabled.
 
+
+#### UnityPlayer.so file not found
+
+```
+ error while loading shared libraries: UnityPlayer.so: cannot open shared object file: No such file or directory
+```
+
+Starting 2019.2, LinuxStandalone build generates a UnityPlayer.so file along with the Data directory. You need to zip the project build along with UnityPlayer.so file before uploading it to USim.
+
 ## CLI commands
 
 #### Too many projects when using `activate project`
