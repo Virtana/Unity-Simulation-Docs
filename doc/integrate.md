@@ -406,7 +406,7 @@ Add the following lines to the `Start()` function of a script that gets called w
 For example, you can add this to the Start() function in `ParamReader.cs`
 
 ```
-var profilingAreas = new UnityEngine.Profiling.ProfilerArea[] { ProfilerArea.CPU, ProfilerArea.GPU, ProfilerArea.Physics };
+var profilingAreas = new UnityEngine.Profiling.ProfilerArea[] { UnityEngine.Profiling.ProfilerArea.CPU, UnityEngine.Profiling.ProfilerArea.GPU, UnityEngine.Profiling.ProfilerArea.Physics };
 DXProfilerManager.EnableProfiling(profilingAreas);
 ```
 ![enable profiling](images/sdk8.png "Profiler")
